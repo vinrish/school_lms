@@ -10,23 +10,24 @@
     "license": "MIT",
     "require": {
         "php": "^8.3",
-        "inertiajs/inertia-laravel": "^3.0",
-        "laravel/framework": "^13.17",
-        "laravel/tinker": "^3.0",
-        "laravel/wayfinder": "^0.1.14"
+        "inertiajs/inertia-laravel": "^3.3.4",
+        "laravel/framework": "^13.31",
+        "laravel/tinker": "^3.0.2",
+        "laravel/wayfinder": "^0.1.21",
+        "nwidart/laravel-modules": "^13.0"
     },
     "require-dev": {
-        "fakerphp/faker": "^1.24",
-        "larastan/larastan": "^3.9",
-        "laravel/boost": "^2.2",
-        "laravel/pail": "^1.2.5",
-        "laravel/pao": "^1.0.6",
-        "laravel/pint": "^1.27",
-        "laravel/sail": "^1.53",
-        "mockery/mockery": "^1.6",
-        "nunomaduro/collision": "^8.9.3",
-        "pestphp/pest": "^5.1",
-        "pestphp/pest-plugin-laravel": "^5.0"
+        "fakerphp/faker": "^1.24.1",
+        "larastan/larastan": "^3.12.1",
+        "laravel/boost": "^2.9",
+        "laravel/pail": "^1.2.7",
+        "laravel/pao": "^1.1.5",
+        "laravel/pint": "^1.32.1",
+        "laravel/sail": "^1.67",
+        "mockery/mockery": "^1.6.15",
+        "nunomaduro/collision": "^8.9.5",
+        "pestphp/pest": "^5.2",
+        "pestphp/pest-plugin-laravel": "^5.0.1"
     },
     "autoload": {
         "psr-4": {
@@ -97,6 +98,11 @@
     "extra": {
         "laravel": {
             "dont-discover": []
+        },
+        "merge-plugin": {
+            "include": [
+                "Modules/*/composer.json"
+            ]
         }
     },
     "config": {
@@ -105,7 +111,8 @@
         "sort-packages": true,
         "allow-plugins": {
             "pestphp/pest-plugin": true,
-            "php-http/discovery": true
+            "php-http/discovery": true,
+            "wikimedia/composer-merge-plugin": true
         }
     },
     "minimum-stability": "stable"
