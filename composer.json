@@ -9,14 +9,15 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^8.3",
+        "php": "^8.4 | ^8.5",
         "inertiajs/inertia-laravel": "^3.3.4",
-        "laravel/framework": "^13.31",
+        "laravel/framework": "^13.32",
         "laravel/tinker": "^3.0.2",
         "laravel/wayfinder": "^0.1.21",
         "nwidart/laravel-modules": "^13.0"
     },
     "require-dev": {
+        "driftingly/rector-laravel": "^2.6.2",
         "fakerphp/faker": "^1.24.1",
         "larastan/larastan": "^3.12.1",
         "laravel/boost": "^2.9",
@@ -27,7 +28,14 @@
         "mockery/mockery": "^1.6.15",
         "nunomaduro/collision": "^8.9.5",
         "pestphp/pest": "^5.2",
-        "pestphp/pest-plugin-laravel": "^5.0.1"
+        "pestphp/pest-plugin-agent": "^5.0",
+        "pestphp/pest-plugin-browser": "^5.0.1",
+        "pestphp/pest-plugin-laravel": "^5.0.1",
+        "pestphp/pest-plugin-phpstan": "^5.2.1",
+        "pestphp/pest-plugin-rector": "^5.0.4",
+        "pestphp/pest-plugin-type-coverage": "^5.0.2",
+        "rector/rector": "^2.6.7",
+        "roave/security-advisories": "dev-latest"
     },
     "autoload": {
         "psr-4": {
@@ -55,7 +63,9 @@
             "@php artisan dev"
         ],
         "lint": [
-            "pint --parallel"
+            "rector",
+            "pint --parallel",
+            "npm run lint"
         ],
         "lint:check": [
             "pint --parallel --test"
@@ -115,5 +125,6 @@
             "wikimedia/composer-merge-plugin": true
         }
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
