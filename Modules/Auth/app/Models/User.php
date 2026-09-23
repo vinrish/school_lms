@@ -11,7 +11,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
-use Laravel\Sanctum\HasApiTokens;
+use Laravel\Passport\Contracts\OAuthenticatable;
+use Laravel\Passport\HasApiTokens;
 use Modules\Auth\Database\Factories\UserFactory;
 use Spatie\Permission\Traits\HasRoles;
 
@@ -27,7 +28,7 @@ use Spatie\Permission\Traits\HasRoles;
  */
 #[Fillable(['name', 'email', 'password'])]
 #[Hidden(['password', 'remember_token'])]
-final class User extends Authenticatable implements MustVerifyEmail
+final class User extends Authenticatable implements MustVerifyEmail, OAuthenticatable
 {
     use HasApiTokens;
 
@@ -36,6 +37,11 @@ final class User extends Authenticatable implements MustVerifyEmail
 
     use HasRoles;
     use Notifiable;
+
+    /**
+     * The guard name for roles and permissions.
+     */
+    protected string $guard_name = 'web';
 
     /**
      * Get the attributes that should be cast.

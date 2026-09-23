@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Auth\Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Modules\Roles\Database\Seeders\RolesAndPermissionsSeeder;
 
 final class AuthDatabaseSeeder extends Seeder
 {

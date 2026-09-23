@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Modules\Auth\Database\Seeders;
+namespace Modules\Roles\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\App;
-use Modules\Auth\Enums\PermissionName;
-use Modules\Auth\Enums\RoleName;
+use Modules\Roles\Enums\PermissionName;
+use Modules\Roles\Enums\RoleName;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\PermissionRegistrar;
@@ -15,7 +15,7 @@ use Spatie\Permission\PermissionRegistrar;
 final class RolesAndPermissionsSeeder extends Seeder
 {
     /**
-     * Seed the roles and permissions for the platform.
+     * Run the database seeds.
      */
     public function run(): void
     {
@@ -32,7 +32,7 @@ final class RolesAndPermissionsSeeder extends Seeder
     }
 
     /**
-     * Map each role to its delegated permissions.
+     * Define the initial role to permission mapping.
      *
      * @return array<string, array<int, string>>
      */

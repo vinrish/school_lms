@@ -44,8 +44,8 @@ void createInertiaApp({
         for (const path of candidateModulePaths) {
             if (modulePages[path]) {
                 return typeof modulePages[path] === 'function'
-                    ? (modulePages[path] as () => Promise<unknown>)()
-                    : modulePages[path];
+                    ? (modulePages[path] as () => Promise<any>)()
+                    : (modulePages[path] as any);
             }
         }
 
@@ -60,8 +60,8 @@ void createInertiaApp({
                 cleanKey.endsWith(`/${lowerName}.jsx`)
             ) {
                 return typeof value === 'function'
-                    ? (value as () => Promise<unknown>)()
-                    : value;
+                    ? (value as () => Promise<any>)()
+                    : (value as any);
             }
         }
 
@@ -72,7 +72,7 @@ void createInertiaApp({
                 `./Pages/${name}.tsx`,
                 `./Pages/${name}.jsx`,
             ],
-            appPages as Record<string, () => Promise<unknown>>,
+            appPages as Record<string, () => Promise<any>>,
         );
     },
     setup({ el, App, props }) {

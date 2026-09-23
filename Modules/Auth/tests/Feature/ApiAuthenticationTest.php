@@ -2,10 +2,16 @@
 
 declare(strict_types=1);
 
+use Laravel\Passport\ClientRepository;
 use Laravel\Passport\Passport;
 use Modules\Auth\Models\User;
 
-it('issues a sanctum token for valid credentials', function (): void {
+beforeEach(function (): void {
+    $clientRepository = new ClientRepository();
+    $clientRepository->createPersonalAccessGrantClient('Test Personal Access Client', 'users');
+});
+
+it('issues a passport token for valid credentials', function (): void {
     $user = User::factory()->create();
 
     $this->postJson(route('api.login'), [
@@ -31,22 +37,21 @@ it('rejects a token request with invalid credentials', function (): void {
     expect($user->tokens()->count())->toBe(0);
 });
 
-it('authenticates an api request with a sanctum token', function (): void {
+it('authenticates an api request with a passport token', function (): void {
     $user = User::factory()->create();
-    $token = $user->createToken('pixel-8')->plainTextToken;
+    $token = $user->createToken('pixel-8')->accessToken;
 
     $this->getJson(route('api.user'), ['Authorization' => 'Bearer '.$token])
         ->assertOk()
         ->assertJsonPath('email', $user->email);
 });
 
-it('rejects a revoked sanctum token', function (): void {
+it('rejects a revoked passport token', function (): void {
     $user = User::factory()->create();
-    $token = $user->createToken('pixel-8')->plainTextToken;
+    $tokenResult = $user->createToken('pixel-8');
+    $tokenResult->getToken()?->revoke();
 
-    $user->tokens()->delete();
-
-    $this->getJson(route('api.user'), ['Authorization' => 'Bearer '.$token])
+    $this->getJson(route('api.user'), ['Authorization' => 'Bearer '.$tokenResult->accessToken])
         ->assertUnauthorized();
 });
 

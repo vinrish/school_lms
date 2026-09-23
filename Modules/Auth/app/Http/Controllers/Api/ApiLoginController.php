@@ -36,7 +36,7 @@ final readonly class ApiLoginController
         $token = $this->tokens->issueToken($user, $validated['device_name']);
 
         return response()->json([
-            'token' => $token->plainTextToken,
+            'token' => $token->accessToken,
         ]);
     }
 }

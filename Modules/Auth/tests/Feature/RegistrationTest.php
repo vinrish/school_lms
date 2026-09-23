@@ -5,9 +5,9 @@ declare(strict_types=1);
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Event;
 use Inertia\Testing\AssertableInertia;
-use Modules\Auth\Database\Seeders\RolesAndPermissionsSeeder;
-use Modules\Auth\Enums\RoleName;
 use Modules\Auth\Models\User;
+use Modules\Roles\Database\Seeders\RolesAndPermissionsSeeder;
+use Modules\Roles\Enums\RoleName;
 
 beforeEach(function (): void {
     $this->seed(RolesAndPermissionsSeeder::class);
