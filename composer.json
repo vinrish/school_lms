@@ -45,6 +45,7 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
+            "Modules\\Admin\\": "Modules/Admin/app/",
             "Modules\\Auth\\": "Modules/Auth/app/",
             "Modules\\Roles\\": "Modules/Roles/app/"
         }
@@ -52,6 +53,7 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/",
+            "Modules\\Admin\\Tests\\": "Modules/Admin/tests/",
             "Modules\\Auth\\Tests\\": "Modules/Auth/tests/",
             "Modules\\Roles\\Tests\\": "Modules/Roles/tests/"
         }
