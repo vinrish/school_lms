@@ -29,7 +29,7 @@ export default function ForgotPassword({ status }: ForgotPasswordProps) {
             <Head title="Forgot Password" />
 
             {status && (
-                <div className="mb-4 text-sm font-medium text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50 p-3 rounded-lg border border-emerald-200 dark:border-emerald-800">
+                <div className="mb-4 rounded-lg border border-emerald-200 bg-emerald-50 p-3 text-sm font-medium text-emerald-600 dark:border-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-400">
                     {status}
                 </div>
             )}
@@ -61,11 +61,11 @@ export default function ForgotPassword({ status }: ForgotPasswordProps) {
                     </PrimaryButton>
                 </div>
 
-                <div className="text-center pt-2 text-sm text-gray-600 dark:text-gray-400">
+                <div className="pt-2 text-center text-sm text-gray-600 dark:text-gray-400">
                     Remember your password?{' '}
                     <Link
                         href="/login"
-                        className="font-medium text-red-600 hover:text-red-500 dark:text-red-400 dark:hover:text-red-300 focus:outline-none focus:underline"
+                        className="font-medium text-red-600 hover:text-red-500 focus:underline focus:outline-none dark:text-red-400 dark:hover:text-red-300"
                     >
                         Back to login
                     </Link>

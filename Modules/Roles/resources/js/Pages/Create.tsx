@@ -26,7 +26,7 @@ export default function Create({ permissions = [] }: CreateProps) {
             action={
                 <Link
                     href="/roles"
-                    className="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-sm font-medium rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                    className="inline-flex items-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
                 >
                     Cancel
                 </Link>
@@ -34,11 +34,11 @@ export default function Create({ permissions = [] }: CreateProps) {
         >
             <Head title="Create Role" />
 
-            <form onSubmit={submit} className="space-y-6 max-w-4xl">
+            <form onSubmit={submit} className="max-w-4xl space-y-6">
                 <div>
                     <label
                         htmlFor="name"
-                        className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                        className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300"
                     >
                         Role Name <span className="text-red-500">*</span>
                     </label>
@@ -49,15 +49,19 @@ export default function Create({ permissions = [] }: CreateProps) {
                         onChange={(e) => setData('name', e.target.value)}
                         placeholder="e.g. librarian, coordinator"
                         required
-                        className="w-full sm:w-1/2 px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-[#f9322c]/50 focus:border-[#f9322c] outline-none transition-colors"
+                        className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-gray-900 transition-colors outline-none focus:border-[#f9322c] focus:ring-2 focus:ring-[#f9322c]/50 sm:w-1/2 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
                     />
-                    {errors.name && <p className="text-sm text-red-600 dark:text-red-400 mt-1">{errors.name}</p>}
+                    {errors.name && (
+                        <p className="mt-1 text-sm text-red-600 dark:text-red-400">
+                            {errors.name}
+                        </p>
+                    )}
                 </div>
 
                 <div>
                     <label
                         htmlFor="guard_name"
-                        className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                        className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300"
                     >
                         Guard Name
                     </label>
@@ -66,33 +70,37 @@ export default function Create({ permissions = [] }: CreateProps) {
                         type="text"
                         value={data.guard_name}
                         onChange={(e) => setData('guard_name', e.target.value)}
-                        className="w-full sm:w-1/2 px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-[#f9322c]/50 focus:border-[#f9322c] outline-none transition-colors"
+                        className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-gray-900 transition-colors outline-none focus:border-[#f9322c] focus:ring-2 focus:ring-[#f9322c]/50 sm:w-1/2 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
                     />
                     {errors.guard_name && (
-                        <p className="text-sm text-red-600 dark:text-red-400 mt-1">{errors.guard_name}</p>
+                        <p className="mt-1 text-sm text-red-600 dark:text-red-400">
+                            {errors.guard_name}
+                        </p>
                     )}
                 </div>
 
-                <div className="pt-4 border-t border-gray-100 dark:border-gray-800">
+                <div className="border-t border-gray-100 pt-4 dark:border-gray-800">
                     <PermissionCheckboxGroup
                         permissions={permissions}
                         selectedPermissions={data.permissions}
-                        onChange={(selected) => setData('permissions', selected)}
+                        onChange={(selected) =>
+                            setData('permissions', selected)
+                        }
                         error={errors.permissions}
                     />
                 </div>
 
-                <div className="flex items-center justify-end gap-3 pt-4 border-t border-gray-100 dark:border-gray-800">
+                <div className="flex items-center justify-end gap-3 border-t border-gray-100 pt-4 dark:border-gray-800">
                     <Link
                         href="/roles"
-                        className="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                        className="rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-800"
                     >
                         Cancel
                     </Link>
                     <button
                         type="submit"
                         disabled={processing}
-                        className="px-4 py-2 bg-[#f9322c] hover:bg-[#d82a24] text-white text-sm font-medium rounded-lg shadow-sm transition-colors focus:outline-none focus:ring-2 focus:ring-[#f9322c]/50 disabled:opacity-50"
+                        className="rounded-lg bg-[#f9322c] px-4 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-[#d82a24] focus:ring-2 focus:ring-[#f9322c]/50 focus:outline-none disabled:opacity-50"
                     >
                         {processing ? 'Creating...' : 'Create Role'}
                     </button>

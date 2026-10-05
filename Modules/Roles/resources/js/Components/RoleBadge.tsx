@@ -5,7 +5,10 @@ interface RoleBadgeProps {
     className?: string;
 }
 
-export default function RoleBadge({ roleName, className = '' }: RoleBadgeProps) {
+export default function RoleBadge({
+    roleName,
+    className = '',
+}: RoleBadgeProps) {
     const getBadgeStyle = (name: string): string => {
         switch (name.toLowerCase()) {
             case 'admin':
@@ -23,8 +26,8 @@ export default function RoleBadge({ roleName, className = '' }: RoleBadgeProps) 
 
     return (
         <span
-            className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border capitalize ${getBadgeStyle(
-                roleName
+            className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium capitalize ${getBadgeStyle(
+                roleName,
             )} ${className}`}
         >
             {roleName}

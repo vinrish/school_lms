@@ -94,7 +94,9 @@ export default function ResetPassword({ token, email }: ResetPasswordProps) {
 
                 <div className="pt-2">
                     <PrimaryButton className="w-full" disabled={processing}>
-                        {processing ? 'Resetting password...' : 'Reset Password'}
+                        {processing
+                            ? 'Resetting password...'
+                            : 'Reset Password'}
                     </PrimaryButton>
                 </div>
             </form>

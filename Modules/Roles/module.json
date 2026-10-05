@@ -4,8 +4,6 @@
     "description": "",
     "keywords": [],
     "priority": 0,
-    "providers": [
-        "Modules\\Roles\\Providers\\RolesServiceProvider"
-    ],
+    "providers": ["Modules\\Roles\\Providers\\RolesServiceProvider"],
     "files": []
 }

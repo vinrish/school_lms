@@ -1,10 +1,5 @@
 {
-    "agents": [
-        "amp",
-        "claude_code",
-        "junie",
-        "opencode"
-    ],
+    "agents": ["amp", "claude_code", "junie", "opencode"],
     "cloud": true,
     "guidelines": true,
     "mcp": true,

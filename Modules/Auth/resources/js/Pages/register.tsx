@@ -109,11 +109,11 @@ export default function Register() {
                     </PrimaryButton>
                 </div>
 
-                <div className="text-center pt-2 text-sm text-gray-600 dark:text-gray-400">
+                <div className="pt-2 text-center text-sm text-gray-600 dark:text-gray-400">
                     Already have an account?{' '}
                     <Link
                         href="/login"
-                        className="font-medium text-red-600 hover:text-red-500 dark:text-red-400 dark:hover:text-red-300 focus:outline-none focus:underline"
+                        className="font-medium text-red-600 hover:text-red-500 focus:underline focus:outline-none dark:text-red-400 dark:hover:text-red-300"
                     >
                         Log in
                     </Link>

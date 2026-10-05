@@ -35,7 +35,7 @@ export default function Login({ canResetPassword, status }: LoginProps) {
             <Head title="Log in" />
 
             {status && (
-                <div className="mb-4 text-sm font-medium text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50 p-3 rounded-lg border border-emerald-200 dark:border-emerald-800">
+                <div className="mb-4 rounded-lg border border-emerald-200 bg-emerald-50 p-3 text-sm font-medium text-emerald-600 dark:border-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-400">
                     {status}
                 </div>
             )}
@@ -60,12 +60,16 @@ export default function Login({ canResetPassword, status }: LoginProps) {
                 </div>
 
                 <div>
-                    <div className="flex items-center justify-between mb-1.5">
-                        <InputLabel htmlFor="password" value="Password" className="mb-0" />
+                    <div className="mb-1.5 flex items-center justify-between">
+                        <InputLabel
+                            htmlFor="password"
+                            value="Password"
+                            className="mb-0"
+                        />
                         {canResetPassword && (
                             <Link
                                 href="/forgot-password"
-                                className="text-xs font-medium text-red-600 hover:text-red-500 dark:text-red-400 dark:hover:text-red-300 focus:outline-none focus:underline"
+                                className="text-xs font-medium text-red-600 hover:text-red-500 focus:underline focus:outline-none dark:text-red-400 dark:hover:text-red-300"
                             >
                                 Forgot password?
                             </Link>
@@ -87,11 +91,13 @@ export default function Login({ canResetPassword, status }: LoginProps) {
                 </div>
 
                 <div className="flex items-center justify-between">
-                    <label className="flex items-center gap-2 cursor-pointer">
+                    <label className="flex cursor-pointer items-center gap-2">
                         <Checkbox
                             name="remember"
                             checked={data.remember}
-                            onChange={(e) => setData('remember', e.target.checked)}
+                            onChange={(e) =>
+                                setData('remember', e.target.checked)
+                            }
                         />
                         <span className="text-sm text-gray-600 dark:text-gray-400">
                             Remember me
@@ -105,11 +111,11 @@ export default function Login({ canResetPassword, status }: LoginProps) {
                     </PrimaryButton>
                 </div>
 
-                <div className="text-center pt-2 text-sm text-gray-600 dark:text-gray-400">
+                <div className="pt-2 text-center text-sm text-gray-600 dark:text-gray-400">
                     Don't have an account?{' '}
                     <Link
                         href="/register"
-                        className="font-medium text-red-600 hover:text-red-500 dark:text-red-400 dark:hover:text-red-300 focus:outline-none focus:underline"
+                        className="font-medium text-red-600 hover:text-red-500 focus:underline focus:outline-none dark:text-red-400 dark:hover:text-red-300"
                     >
                         Sign up
                     </Link>

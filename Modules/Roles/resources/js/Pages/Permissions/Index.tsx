@@ -11,7 +11,7 @@ export default function Index({ permissions = [] }: IndexProps) {
     const [searchTerm, setSearchTerm] = useState('');
 
     const filteredPermissions = permissions.filter((permission) =>
-        permission.name.toLowerCase().includes(searchTerm.toLowerCase())
+        permission.name.toLowerCase().includes(searchTerm.toLowerCase()),
     );
 
     return (
@@ -19,13 +19,14 @@ export default function Index({ permissions = [] }: IndexProps) {
             <Head title="Permissions Overview" />
 
             <div className="space-y-6">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-gray-100 dark:border-gray-800">
+                <div className="flex flex-col gap-4 border-b border-gray-100 pb-4 sm:flex-row sm:items-center sm:justify-between dark:border-gray-800">
                     <div>
                         <h2 className="text-base font-semibold text-gray-900 dark:text-gray-100">
                             Available Permissions ({permissions.length})
                         </h2>
-                        <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
-                            Standard system capabilities configured across LMS roles.
+                        <p className="mt-0.5 text-xs text-gray-500 dark:text-gray-400">
+                            Standard system capabilities configured across LMS
+                            roles.
                         </p>
                     </div>
 
@@ -35,26 +36,26 @@ export default function Index({ permissions = [] }: IndexProps) {
                             placeholder="Filter permissions..."
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
-                            className="w-full px-3 py-1.5 text-sm border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-[#f9322c]/50 focus:border-[#f9322c] outline-none"
+                            className="w-full rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-900 outline-none focus:border-[#f9322c] focus:ring-2 focus:ring-[#f9322c]/50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
                         />
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                     {filteredPermissions.map((permission) => (
                         <div
                             key={permission.id}
-                            className="p-4 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800/40 hover:border-[#f9322c]/40 transition-colors shadow-xs flex flex-col justify-between"
+                            className="flex flex-col justify-between rounded-lg border border-gray-200 bg-white p-4 shadow-xs transition-colors hover:border-[#f9322c]/40 dark:border-gray-700 dark:bg-gray-800/40"
                         >
                             <div>
-                                <h3 className="font-semibold text-sm text-gray-900 dark:text-gray-100 capitalize">
+                                <h3 className="text-sm font-semibold text-gray-900 capitalize dark:text-gray-100">
                                     {permission.name.replace(/_/g, ' ')}
                                 </h3>
-                                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 font-mono">
+                                <p className="mt-1 font-mono text-xs text-gray-500 dark:text-gray-400">
                                     {permission.name}
                                 </p>
                             </div>
-                            <div className="mt-3 pt-3 border-t border-gray-100 dark:border-gray-800/80 flex items-center justify-between text-[11px] text-gray-400">
+                            <div className="mt-3 flex items-center justify-between border-t border-gray-100 pt-3 text-[11px] text-gray-400 dark:border-gray-800/80">
                                 <span>Guard: {permission.guard_name}</span>
                                 <span>ID: #{permission.id}</span>
                             </div>
@@ -63,7 +64,7 @@ export default function Index({ permissions = [] }: IndexProps) {
                 </div>
 
                 {filteredPermissions.length === 0 && (
-                    <div className="text-center py-8">
+                    <div className="py-8 text-center">
                         <p className="text-sm text-gray-500 dark:text-gray-400">
                             No permissions match "{searchTerm}".
                         </p>

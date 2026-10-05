@@ -3,7 +3,7 @@ name: passport-development
 description: "Develops OAuth2 API authentication with Laravel Passport. Activates when installing or configuring Passport; setting up OAuth2 grants (authorization code, client credentials, personal access tokens, device authorization); managing OAuth clients; protecting API routes with token authentication; defining or checking token scopes; configuring SPA cookie authentication; handling token lifetimes and refresh tokens; or when the user mentions Passport, OAuth2, API tokens, bearer tokens, or API authentication. Make sure to use this skill whenever the user works with OAuth2, API tokens, or third-party API access, even if they don't explicitly mention Passport."
 license: MIT
 metadata:
-  author: laravel
+    author: laravel
 ---
 
 # Passport OAuth2 Authentication
@@ -79,13 +79,13 @@ The `api` guard must use the `passport` driver in `config/auth.php`. Using `toke
 
 Matching the right grant to the use case is the most important Passport decision. Use `search-docs` for implementation details of any grant.
 
-| Use Case | Grant Type | Client Flag |
-|----------|-----------|-------------|
-| Third-party app accessing user data | Authorization Code | (default) |
-| Mobile/SPA without client secret | Authorization Code + PKCE | `--public` |
-| Machine-to-machine, no user context | Client Credentials | `--client` |
-| User-generated API keys | Personal Access Tokens | `--personal` |
-| Smart TV, CLI, IoT devices | Device Authorization | `--device` |
+| Use Case                            | Grant Type                | Client Flag  |
+| ----------------------------------- | ------------------------- | ------------ |
+| Third-party app accessing user data | Authorization Code        | (default)    |
+| Mobile/SPA without client secret    | Authorization Code + PKCE | `--public`   |
+| Machine-to-machine, no user context | Client Credentials        | `--client`   |
+| User-generated API keys             | Personal Access Tokens    | `--personal` |
+| Smart TV, CLI, IoT devices          | Device Authorization      | `--device`   |
 
 **Legacy grants** (Password, Implicit) are disabled by default and not recommended. They must be explicitly enabled with `Passport::enablePasswordGrant()` or `Passport::enableImplicitGrant()`.
 

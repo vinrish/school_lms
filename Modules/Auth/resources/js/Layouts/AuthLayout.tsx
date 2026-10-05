@@ -7,10 +7,13 @@ export default function AuthLayout({
     children,
 }: PropsWithChildren<{ title?: string; description?: ReactNode }>) {
     return (
-        <div className="min-h-screen flex flex-col justify-center items-center bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] dark:text-[#EDEDEC] p-6 lg:p-8 selection:bg-[#FF2D20] selection:text-white">
+        <div className="flex min-h-screen flex-col items-center justify-center bg-[#FDFDFC] p-6 text-[#1b1b18] selection:bg-[#FF2D20] selection:text-white lg:p-8 dark:bg-[#0a0a0a] dark:text-[#EDEDEC]">
             <div className="w-full max-w-md">
-                <div className="flex flex-col items-center mb-6">
-                    <Link href="/" className="flex items-center gap-2 mb-2 focus:outline-none">
+                <div className="mb-6 flex flex-col items-center">
+                    <Link
+                        href="/"
+                        className="mb-2 flex items-center gap-2 focus:outline-none"
+                    >
                         <svg
                             className="h-10 w-auto text-[#f9322c]"
                             viewBox="0 0 62 65"
@@ -22,17 +25,23 @@ export default function AuthLayout({
                                 fill="currentColor"
                             />
                         </svg>
-                        <span className="text-xl font-bold tracking-tight">School LMS</span>
+                        <span className="text-xl font-bold tracking-tight">
+                            School LMS
+                        </span>
                     </Link>
-                    {title && <h1 className="text-2xl font-semibold tracking-tight mt-2">{title}</h1>}
+                    {title && (
+                        <h1 className="mt-2 text-2xl font-semibold tracking-tight">
+                            {title}
+                        </h1>
+                    )}
                     {description && (
-                        <p className="text-sm text-gray-600 dark:text-gray-400 text-center mt-1">
+                        <p className="mt-1 text-center text-sm text-gray-600 dark:text-gray-400">
                             {description}
                         </p>
                     )}
                 </div>
 
-                <div className="bg-white dark:bg-[#161615] rounded-xl border border-gray-200 dark:border-gray-800 p-6 sm:p-8 shadow-sm">
+                <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8 dark:border-gray-800 dark:bg-[#161615]">
                     {children}
                 </div>
             </div>

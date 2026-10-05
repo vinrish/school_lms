@@ -24,7 +24,7 @@ export default function VerifyEmail({ status }: VerifyEmailProps) {
             <Head title="Email Verification" />
 
             {status === 'verification-link-sent' && (
-                <div className="mb-4 text-sm font-medium text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50 p-3 rounded-lg border border-emerald-200 dark:border-emerald-800">
+                <div className="mb-4 rounded-lg border border-emerald-200 bg-emerald-50 p-3 text-sm font-medium text-emerald-600 dark:border-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-400">
                     A new verification link has been sent to the email address
                     you provided during registration.
                 </div>
@@ -44,7 +44,7 @@ export default function VerifyEmail({ status }: VerifyEmailProps) {
                         href="/logout"
                         method="post"
                         as="button"
-                        className="text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 underline focus:outline-none"
+                        className="text-sm font-medium text-gray-600 underline hover:text-gray-900 focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
                     >
                         Log Out
                     </Link>
