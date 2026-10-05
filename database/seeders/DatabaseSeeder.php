@@ -22,9 +22,10 @@ final class DatabaseSeeder extends Seeder
             AuthDatabaseSeeder::class,
         ]);
 
-        User::factory()->create([
+        User::query()->firstOrCreate(['email' => 'test@example.com'], [
             'name' => 'Test User',
-            'email' => 'test@example.com',
+            'password' => 'password',
+            'email_verified_at' => now(),
         ]);
     }
 }

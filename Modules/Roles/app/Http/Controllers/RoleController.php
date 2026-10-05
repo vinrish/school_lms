@@ -20,8 +20,8 @@ use Spatie\Permission\Models\Role;
 final readonly class RoleController
 {
     public function __construct(
-        private readonly RoleService $roleService,
-        private readonly PermissionService $permissionService,
+        private RoleService $roleService,
+        private PermissionService $permissionService,
     ) {}
 
     /**
@@ -54,8 +54,7 @@ final readonly class RoleController
     ): RedirectResponse {
         $action->handle(RoleData::fromRequest($request));
 
-        return redirect()
-            ->route('roles.index')
+        return to_route('roles.index')
             ->with('success', 'Role created successfully.');
     }
 
@@ -94,8 +93,7 @@ final readonly class RoleController
     ): RedirectResponse {
         $action->handle($role, RoleData::fromRequest($request));
 
-        return redirect()
-            ->route('roles.index')
+        return to_route('roles.index')
             ->with('success', 'Role updated successfully.');
     }
 
@@ -108,8 +106,7 @@ final readonly class RoleController
     ): RedirectResponse {
         $action->handle($role);
 
-        return redirect()
-            ->route('roles.index')
+        return to_route('roles.index')
             ->with('success', 'Role deleted successfully.');
     }
 }

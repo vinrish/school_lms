@@ -21,7 +21,7 @@ use Symfony\Component\HttpFoundation\Response;
 final readonly class ApiRoleController
 {
     public function __construct(
-        private readonly RoleService $roleService,
+        private RoleService $roleService,
     ) {}
 
     /**

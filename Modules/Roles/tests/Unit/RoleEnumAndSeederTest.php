@@ -34,13 +34,13 @@ it('seeds default roles and permissions correctly', function (): void {
     $this->seed(RolesAndPermissionsSeeder::class);
 
     foreach (RoleName::values() as $role) {
-        expect(Role::where('name', $role)->exists())->toBeTrue();
+        expect(Role::query()->where('name', $role)->exists())->toBeTrue();
     }
 
     foreach (PermissionName::values() as $permission) {
-        expect(Permission::where('name', $permission)->exists())->toBeTrue();
+        expect(Permission::query()->where('name', $permission)->exists())->toBeTrue();
     }
 
     $adminRole = Role::findByName(RoleName::Admin->value, 'web');
-    expect($adminRole->permissions)->toHaveCount(count(PermissionName::values()));
+    expect($adminRole->permissions)->toHaveSameSize(PermissionName::values());
 });
