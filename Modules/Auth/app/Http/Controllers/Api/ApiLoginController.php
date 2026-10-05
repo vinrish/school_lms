@@ -16,7 +16,7 @@ final readonly class ApiLoginController
     public function __construct(private TokenService $tokens) {}
 
     /**
-     * Issue a first-party Sanctum token for a valid set of credentials.
+     * Issue a first-party access token for a valid set of credentials.
      *
      * @throws ValidationException
      */
