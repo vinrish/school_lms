@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Modules\Auth\Models\User;
+use Modules\Roles\Enums\RoleName;
 
 /**
  * @extends Factory<User>
@@ -50,5 +51,45 @@ final class UserFactory extends Factory
         return $this->state(fn (array $attributes): array => [
             'email_verified_at' => null,
         ]);
+    }
+
+    /**
+     * Indicate that the user has the admin role.
+     */
+    public function admin(): static
+    {
+        return $this->afterCreating(function (User $user): void {
+            $user->assignRole(RoleName::Admin->value);
+        });
+    }
+
+    /**
+     * Indicate that the user has the teacher role.
+     */
+    public function teacher(): static
+    {
+        return $this->afterCreating(function (User $user): void {
+            $user->assignRole(RoleName::Teacher->value);
+        });
+    }
+
+    /**
+     * Indicate that the user has the student role.
+     */
+    public function student(): static
+    {
+        return $this->afterCreating(function (User $user): void {
+            $user->assignRole(RoleName::Student->value);
+        });
+    }
+
+    /**
+     * Indicate that the user has the parent role.
+     */
+    public function parent(): static
+    {
+        return $this->afterCreating(function (User $user): void {
+            $user->assignRole(RoleName::Parent->value);
+        });
     }
 }
