@@ -41,7 +41,7 @@ final class User extends Authenticatable implements MustVerifyEmail, OAuthentica
     /**
      * The guard name for roles and permissions.
      */
-    private string $guard_name = 'web';
+    protected string $guard_name = 'web';
 
     /**
      * Get the attributes that should be cast.

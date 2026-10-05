@@ -1,6 +1,5 @@
 import { Link, usePage } from '@inertiajs/react';
 import type { PropsWithChildren, ReactNode } from 'react';
-import AppLayout from '@/Layouts/AppLayout';
 
 export default function RolesLayout({
     title,
@@ -12,12 +11,15 @@ export default function RolesLayout({
     const isPermissionsTab = url.startsWith('/permissions');
 
     return (
-        <div className="min-h-screen bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] dark:text-[#EDEDEC]">
-            <header className="border-b border-gray-200 dark:border-gray-800 bg-white/70 dark:bg-[#161615]/70 backdrop-blur-md sticky top-0 z-10">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex justify-between items-center h-16">
+        <div className="min-h-screen bg-[#FDFDFC] text-[#1b1b18] dark:bg-[#0a0a0a] dark:text-[#EDEDEC]">
+            <header className="sticky top-0 z-10 border-b border-gray-200 bg-white/70 backdrop-blur-md dark:border-gray-800 dark:bg-[#161615]/70">
+                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                    <div className="flex h-16 items-center justify-between">
                         <div className="flex items-center gap-6">
-                            <Link href="/" className="flex items-center gap-2 font-bold text-lg">
+                            <Link
+                                href="/"
+                                className="flex items-center gap-2 text-lg font-bold"
+                            >
                                 <svg
                                     className="h-7 w-auto text-[#f9322c]"
                                     viewBox="0 0 62 65"
@@ -35,20 +37,20 @@ export default function RolesLayout({
                             <nav className="flex items-center gap-1 sm:gap-4">
                                 <Link
                                     href="/roles"
-                                    className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
+                                    className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
                                         isRolesTab
-                                            ? 'bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white'
-                                            : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                                            ? 'bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-white'
+                                            : 'text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white'
                                     }`}
                                 >
                                     Roles
                                 </Link>
                                 <Link
                                     href="/permissions"
-                                    className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
+                                    className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
                                         isPermissionsTab
-                                            ? 'bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white'
-                                            : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                                            ? 'bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-white'
+                                            : 'text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white'
                                     }`}
                                 >
                                     Permissions
@@ -68,18 +70,21 @@ export default function RolesLayout({
                 </div>
             </header>
 
-            <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+            <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+                <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                     <div>
-                        <h1 className="text-2xl font-bold tracking-tight">{title}</h1>
-                        <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-                            Manage access control, roles, and permissions across your school LMS.
+                        <h1 className="text-2xl font-bold tracking-tight">
+                            {title}
+                        </h1>
+                        <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                            Manage access control, roles, and permissions across
+                            your school LMS.
                         </p>
                     </div>
                     {action && <div>{action}</div>}
                 </div>
 
-                <div className="bg-white dark:bg-[#161615] rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm p-6">
+                <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-[#161615]">
                     {children}
                 </div>
             </main>

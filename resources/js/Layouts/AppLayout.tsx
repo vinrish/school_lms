@@ -42,7 +42,12 @@ export default function AppLayout({
                       name: 'Admin Dashboard',
                       href: '/admin/dashboard',
                       icon: (
-                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg
+                              className="h-5 w-5"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                          >
                               <path
                                   strokeLinecap="round"
                                   strokeLinejoin="round"
@@ -59,7 +64,12 @@ export default function AppLayout({
                       name: 'Home',
                       href: '/',
                       icon: (
-                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg
+                              className="h-5 w-5"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                          >
                               <path
                                   strokeLinecap="round"
                                   strokeLinejoin="round"
@@ -75,7 +85,12 @@ export default function AppLayout({
             name: 'Roles',
             href: '/roles',
             icon: (
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg
+                    className="h-5 w-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                >
                     <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -90,7 +105,12 @@ export default function AppLayout({
             name: 'Permissions',
             href: '/permissions',
             icon: (
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg
+                    className="h-5 w-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                >
                     <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -108,30 +128,43 @@ export default function AppLayout({
     };
 
     return (
-        <div className="min-h-screen bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] dark:text-[#EDEDEC] flex flex-col">
+        <div className="flex min-h-screen flex-col bg-[#FDFDFC] text-[#1b1b18] dark:bg-[#0a0a0a] dark:text-[#EDEDEC]">
             {/* Mobile Sidebar Overlay */}
             {sidebarOpen && (
                 <div
-                    className="fixed inset-0 z-40 bg-black/50 lg:hidden backdrop-blur-xs transition-opacity"
+                    className="fixed inset-0 z-40 bg-black/50 backdrop-blur-xs transition-opacity lg:hidden"
                     onClick={() => setSidebarOpen(false)}
                 />
             )}
 
             {/* Top Navigation Bar */}
-            <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-[#161615]/80 backdrop-blur-md px-4 sm:px-6 lg:px-8">
+            <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b border-gray-200 bg-white/80 px-4 backdrop-blur-md sm:px-6 lg:px-8 dark:border-gray-800 dark:bg-[#161615]/80">
                 <div className="flex items-center gap-4">
                     <button
                         type="button"
                         onClick={() => setSidebarOpen(!sidebarOpen)}
-                        className="rounded-lg p-2 text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 focus:outline-none lg:hidden"
+                        className="rounded-lg p-2 text-gray-600 hover:bg-gray-100 focus:outline-none lg:hidden dark:text-gray-400 dark:hover:bg-gray-800"
                         aria-label="Toggle sidebar"
                     >
-                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                        <svg
+                            className="h-6 w-6"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M4 6h16M4 12h16M4 18h16"
+                            />
                         </svg>
                     </button>
 
-                    <Link href="/" className="flex items-center gap-2.5 font-bold text-lg tracking-tight">
+                    <Link
+                        href="/"
+                        className="flex items-center gap-2.5 text-lg font-bold tracking-tight"
+                    >
                         <svg
                             className="h-7 w-auto text-[#f9322c]"
                             viewBox="0 0 62 65"
@@ -153,44 +186,78 @@ export default function AppLayout({
                             <button
                                 type="button"
                                 onClick={() => setUserMenuOpen(!userMenuOpen)}
-                                className="flex items-center gap-3 p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors focus:outline-none"
+                                className="flex items-center gap-3 rounded-lg p-1.5 transition-colors hover:bg-gray-100 focus:outline-none dark:hover:bg-gray-800"
                             >
-                                <div className="h-8 w-8 rounded-full bg-[#f9322c]/10 text-[#f9322c] flex items-center justify-center font-semibold text-sm">
-                                    {user.name ? user.name.charAt(0).toUpperCase() : 'U'}
+                                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#f9322c]/10 text-sm font-semibold text-[#f9322c]">
+                                    {user.name
+                                        ? user.name.charAt(0).toUpperCase()
+                                        : 'U'}
                                 </div>
-                                <div className="hidden md:flex flex-col text-left">
-                                    <span className="text-sm font-medium leading-none">{user.name}</span>
-                                    <span className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
-                                        {user.roles && user.roles.length > 0 ? user.roles[0] : user.email}
+                                <div className="hidden flex-col text-left md:flex">
+                                    <span className="text-sm leading-none font-medium">
+                                        {user.name}
+                                    </span>
+                                    <span className="mt-0.5 text-xs text-gray-500 dark:text-gray-400">
+                                        {user.roles && user.roles.length > 0
+                                            ? user.roles[0]
+                                            : user.email}
                                     </span>
                                 </div>
-                                <svg className="w-4 h-4 text-gray-500 hidden md:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                <svg
+                                    className="hidden h-4 w-4 text-gray-500 md:block"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M19 9l-7 7-7-7"
+                                    />
                                 </svg>
                             </button>
 
                             {userMenuOpen && (
-                                <div className="absolute right-0 mt-2 w-56 rounded-xl bg-white dark:bg-[#161615] border border-gray-200 dark:border-gray-800 shadow-lg py-1.5 z-50">
-                                    <div className="px-4 py-2 border-b border-gray-100 dark:border-gray-800">
-                                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Signed in as</p>
-                                        <p className="text-sm font-medium truncate text-gray-900 dark:text-gray-100 mt-0.5">{user.email}</p>
-                                        {user.roles && user.roles.length > 0 && (
-                                            <div className="flex flex-wrap gap-1 mt-1.5">
-                                                {user.roles.map((r) => (
-                                                    <span key={r} className="text-[10px] uppercase font-semibold px-1.5 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
-                                                        {r}
-                                                    </span>
-                                                ))}
-                                            </div>
-                                        )}
+                                <div className="absolute right-0 z-50 mt-2 w-56 rounded-xl border border-gray-200 bg-white py-1.5 shadow-lg dark:border-gray-800 dark:bg-[#161615]">
+                                    <div className="border-b border-gray-100 px-4 py-2 dark:border-gray-800">
+                                        <p className="text-xs font-semibold tracking-wider text-gray-400 uppercase">
+                                            Signed in as
+                                        </p>
+                                        <p className="mt-0.5 truncate text-sm font-medium text-gray-900 dark:text-gray-100">
+                                            {user.email}
+                                        </p>
+                                        {user.roles &&
+                                            user.roles.length > 0 && (
+                                                <div className="mt-1.5 flex flex-wrap gap-1">
+                                                    {user.roles.map((r) => (
+                                                        <span
+                                                            key={r}
+                                                            className="rounded bg-gray-100 px-1.5 py-0.5 text-[10px] font-semibold text-gray-700 uppercase dark:bg-gray-800 dark:text-gray-300"
+                                                        >
+                                                            {r}
+                                                        </span>
+                                                    ))}
+                                                </div>
+                                            )}
                                     </div>
                                     <button
                                         type="button"
                                         onClick={handleLogout}
-                                        className="w-full text-left px-4 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-gray-50 dark:hover:bg-gray-800/60 flex items-center gap-2"
+                                        className="flex w-full items-center gap-2 px-4 py-2 text-left text-sm text-red-600 hover:bg-gray-50 dark:text-red-400 dark:hover:bg-gray-800/60"
                                     >
-                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                                        <svg
+                                            className="h-4 w-4"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth={2}
+                                                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                                            />
                                         </svg>
                                         Sign out
                                     </button>
@@ -201,13 +268,13 @@ export default function AppLayout({
                         <div className="flex items-center gap-2">
                             <Link
                                 href="/login"
-                                className="px-3.5 py-1.5 text-sm font-medium rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                                className="rounded-lg px-3.5 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-800"
                             >
                                 Log in
                             </Link>
                             <Link
                                 href="/register"
-                                className="px-3.5 py-1.5 text-sm font-medium rounded-lg bg-[#f9322c] hover:bg-[#d82a24] text-white"
+                                className="rounded-lg bg-[#f9322c] px-3.5 py-1.5 text-sm font-medium text-white hover:bg-[#d82a24]"
                             >
                                 Register
                             </Link>
@@ -219,21 +286,33 @@ export default function AppLayout({
             <div className="flex flex-1">
                 {/* Sidebar Navigation */}
                 <aside
-                    className={`fixed inset-y-0 left-0 z-50 w-64 transform bg-white dark:bg-[#161615] border-r border-gray-200 dark:border-gray-800 pt-16 transition-transform duration-200 ease-in-out lg:static lg:pt-0 lg:translate-x-0 ${
+                    className={`fixed inset-y-0 left-0 z-50 w-64 transform border-r border-gray-200 bg-white pt-16 transition-transform duration-200 ease-in-out lg:static lg:translate-x-0 lg:pt-0 dark:border-gray-800 dark:bg-[#161615] ${
                         sidebarOpen ? 'translate-x-0' : '-translate-x-full'
                     }`}
                 >
-                    <div className="flex flex-col h-full justify-between p-4">
+                    <div className="flex h-full flex-col justify-between p-4">
                         <div className="space-y-6">
-                            <div className="lg:hidden flex items-center justify-between pb-4 border-b border-gray-100 dark:border-gray-800">
-                                <span className="font-semibold text-sm text-gray-500 uppercase tracking-wider">Navigation</span>
+                            <div className="flex items-center justify-between border-b border-gray-100 pb-4 lg:hidden dark:border-gray-800">
+                                <span className="text-sm font-semibold tracking-wider text-gray-500 uppercase">
+                                    Navigation
+                                </span>
                                 <button
                                     type="button"
                                     onClick={() => setSidebarOpen(false)}
-                                    className="p-1.5 rounded-lg text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800"
+                                    className="rounded-lg p-1.5 text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800"
                                 >
-                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                    <svg
+                                        className="h-5 w-5"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={2}
+                                            d="M6 18L18 6M6 6l12 12"
+                                        />
                                     </svg>
                                 </button>
                             </div>
@@ -244,13 +323,19 @@ export default function AppLayout({
                                         key={item.name}
                                         href={item.href}
                                         onClick={() => setSidebarOpen(false)}
-                                        className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                                        className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
                                             item.active
                                                 ? 'bg-[#f9322c]/10 text-[#f9322c] dark:bg-[#f9322c]/20'
-                                                : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800/60'
+                                                : 'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800/60'
                                         }`}
                                     >
-                                        <span className={item.active ? 'text-[#f9322c]' : 'text-gray-400 dark:text-gray-500'}>
+                                        <span
+                                            className={
+                                                item.active
+                                                    ? 'text-[#f9322c]'
+                                                    : 'text-gray-400 dark:text-gray-500'
+                                            }
+                                        >
                                             {item.icon}
                                         </span>
                                         {item.name}
@@ -260,14 +345,24 @@ export default function AppLayout({
                         </div>
 
                         {user && (
-                            <div className="pt-4 border-t border-gray-200 dark:border-gray-800">
+                            <div className="border-t border-gray-200 pt-4 dark:border-gray-800">
                                 <button
                                     type="button"
                                     onClick={handleLogout}
-                                    className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/30 transition-colors"
+                                    className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-red-600 transition-colors hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-950/30"
                                 >
-                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                                    <svg
+                                        className="h-5 w-5"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={2}
+                                            d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                                        />
                                     </svg>
                                     Sign out
                                 </button>
@@ -278,33 +373,63 @@ export default function AppLayout({
 
                 {/* Main Content Area */}
                 <main className="flex-1 overflow-x-hidden p-4 sm:p-6 lg:p-8">
-                    <div className="max-w-7xl mx-auto space-y-6">
+                    <div className="mx-auto max-w-7xl space-y-6">
                         {/* Flash message notifications */}
                         {flash?.success && (
-                            <div className="rounded-xl border border-green-200 dark:border-green-900 bg-green-50 dark:bg-green-950/40 p-4 text-green-800 dark:text-green-300 text-sm flex items-center justify-between">
+                            <div className="flex items-center justify-between rounded-xl border border-green-200 bg-green-50 p-4 text-sm text-green-800 dark:border-green-900 dark:bg-green-950/40 dark:text-green-300">
                                 <div className="flex items-center gap-2">
-                                    <svg className="w-5 h-5 text-green-600 dark:text-green-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                    <svg
+                                        className="h-5 w-5 shrink-0 text-green-600 dark:text-green-400"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={2}
+                                            d="M5 13l4 4L19 7"
+                                        />
                                     </svg>
                                     <span>{flash.success}</span>
                                 </div>
                             </div>
                         )}
                         {flash?.error && (
-                            <div className="rounded-xl border border-red-200 dark:border-red-900 bg-red-50 dark:bg-red-950/40 p-4 text-red-800 dark:text-red-300 text-sm flex items-center justify-between">
+                            <div className="flex items-center justify-between rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-800 dark:border-red-900 dark:bg-red-950/40 dark:text-red-300">
                                 <div className="flex items-center gap-2">
-                                    <svg className="w-5 h-5 text-red-600 dark:text-red-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                    <svg
+                                        className="h-5 w-5 shrink-0 text-red-600 dark:text-red-400"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={2}
+                                            d="M6 18L18 6M6 6l12 12"
+                                        />
                                     </svg>
                                     <span>{flash.error}</span>
                                 </div>
                             </div>
                         )}
                         {flash?.status && (
-                            <div className="rounded-xl border border-blue-200 dark:border-blue-900 bg-blue-50 dark:bg-blue-950/40 p-4 text-blue-800 dark:text-blue-300 text-sm flex items-center justify-between">
+                            <div className="flex items-center justify-between rounded-xl border border-blue-200 bg-blue-50 p-4 text-sm text-blue-800 dark:border-blue-900 dark:bg-blue-950/40 dark:text-blue-300">
                                 <div className="flex items-center gap-2">
-                                    <svg className="w-5 h-5 text-blue-600 dark:text-blue-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    <svg
+                                        className="h-5 w-5 shrink-0 text-blue-600 dark:text-blue-400"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={2}
+                                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                        />
                                     </svg>
                                     <span>{flash.status}</span>
                                 </div>
@@ -313,27 +438,39 @@ export default function AppLayout({
 
                         {/* Page Header */}
                         {(title || action || breadcrumbs) && (
-                            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                                 <div>
                                     {breadcrumbs && breadcrumbs.length > 0 && (
-                                        <nav className="flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400 mb-1">
+                                        <nav className="mb-1 flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400">
                                             {breadcrumbs.map((bc, idx) => (
-                                                <span key={bc.label} className="flex items-center gap-1.5">
+                                                <span
+                                                    key={bc.label}
+                                                    className="flex items-center gap-1.5"
+                                                >
                                                     {idx > 0 && <span>/</span>}
                                                     {bc.href ? (
-                                                        <Link href={bc.href} className="hover:text-gray-800 dark:hover:text-gray-200">
+                                                        <Link
+                                                            href={bc.href}
+                                                            className="hover:text-gray-800 dark:hover:text-gray-200"
+                                                        >
                                                             {bc.label}
                                                         </Link>
                                                     ) : (
-                                                        <span className="text-gray-800 dark:text-gray-200 font-medium">{bc.label}</span>
+                                                        <span className="font-medium text-gray-800 dark:text-gray-200">
+                                                            {bc.label}
+                                                        </span>
                                                     )}
                                                 </span>
                                             ))}
                                         </nav>
                                     )}
-                                    {title && <h1 className="text-2xl font-bold tracking-tight">{title}</h1>}
+                                    {title && (
+                                        <h1 className="text-2xl font-bold tracking-tight">
+                                            {title}
+                                        </h1>
+                                    )}
                                     {subtitle && (
-                                        <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                                        <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
                                             {subtitle}
                                         </p>
                                     )}
