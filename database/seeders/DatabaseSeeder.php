@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
-use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Modules\Auth\Database\Seeders\AuthDatabaseSeeder;
+use Modules\Auth\Models\User;
 
 final class DatabaseSeeder extends Seeder
 {
@@ -17,7 +18,9 @@ final class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        $this->call([
+            AuthDatabaseSeeder::class,
+        ]);
 
         User::factory()->create([
             'name' => 'Test User',

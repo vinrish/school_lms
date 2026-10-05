@@ -11,6 +11,10 @@
         <testsuite name="Feature">
             <directory>tests/Feature</directory>
         </testsuite>
+        <testsuite name="Modules">
+            <directory>Modules/*/tests/Unit</directory>
+            <directory>Modules/*/tests/Feature</directory>
+        </testsuite>
     </testsuites>
     <source>
         <include>
@@ -32,5 +36,6 @@
         <env name="PULSE_ENABLED" value="false"/>
         <env name="TELESCOPE_ENABLED" value="false"/>
         <env name="NIGHTWATCH_ENABLED" value="false"/>
+        <env name="INERTIA_SSR_ENABLED" value="false"/>
     </php>
 </phpunit>

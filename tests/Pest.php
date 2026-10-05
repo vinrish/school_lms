@@ -22,6 +22,13 @@ pest()->extend(TestCase::class)
     })
     ->in('Browser', 'Feature', 'Unit');
 
+pest()->extend(TestCase::class)
+    ->use(RefreshDatabase::class)
+    ->in(
+        __DIR__.'/../Modules/Auth/tests',
+        __DIR__.'/../Modules/Roles/tests',
+    );
+
 pest()->tia()->defaultBranch('main');
 
 expect()->extend('toBeOne', fn () => $this->toBe(1));

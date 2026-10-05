@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Database\Factories;
+namespace Modules\Auth\Database\Factories;
 
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Modules\Auth\Models\User;
 
 /**
  * @extends Factory<User>
@@ -15,9 +15,16 @@ use Illuminate\Support\Str;
 final class UserFactory extends Factory
 {
     /**
+     * The name of the factory's corresponding model.
+     *
+     * @var class-string<User>
+     */
+    protected $model = User::class;
+
+    /**
      * The current password being used by the factory.
      */
-    private static ?string $password;
+    private static ?string $password = null;
 
     /**
      * Define the model's default state.
