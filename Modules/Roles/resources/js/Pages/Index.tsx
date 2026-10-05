@@ -8,7 +8,7 @@ interface IndexProps {
     permissions: Permission[];
 }
 
-export default function Index({ roles = [] }: IndexProps) {
+export default function Index({ roles }: IndexProps) {
     const handleDelete = (role: Role) => {
         if (
             confirm(

@@ -10,7 +10,7 @@ interface EditProps {
     permissions: Permission[];
 }
 
-export default function Edit({ role, permissions = [] }: EditProps) {
+export default function Edit({ role, permissions }: EditProps) {
     const { data, setData, put, processing, errors } = useForm<RoleFormData>({
         name: role.name,
         guard_name: role.guard_name,

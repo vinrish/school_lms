@@ -7,7 +7,7 @@ interface IndexProps {
     permissions: Permission[];
 }
 
-export default function Index({ permissions = [] }: IndexProps) {
+export default function Index({ permissions }: IndexProps) {
     const [searchTerm, setSearchTerm] = useState('');
 
     const filteredPermissions = permissions.filter((permission) =>

@@ -8,7 +8,7 @@ interface CreateProps {
     permissions: Permission[];
 }
 
-export default function Create({ permissions = [] }: CreateProps) {
+export default function Create({ permissions }: CreateProps) {
     const { data, setData, post, processing, errors } = useForm<RoleFormData>({
         name: '',
         guard_name: 'web',
