@@ -24,7 +24,6 @@ final class UpdateRoleRequest extends FormRequest
      */
     public function rules(): array
     {
-        /** @var mixed $roleId */
         $roleId = $this->route('role');
         if (is_object($roleId) && isset($roleId->id)) {
             $roleId = $roleId->id;

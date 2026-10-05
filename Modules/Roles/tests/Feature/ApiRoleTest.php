@@ -72,10 +72,11 @@ it('assigns roles to a user via API', function (): void {
     ]);
 
     $response->assertOk();
+
     $targetUser->refresh();
 
-    expect($targetUser->hasRole(RoleName::Teacher->value))->toBeTrue();
-    expect($targetUser->hasRole(RoleName::Admin->value))->toBeTrue();
+    expect($targetUser->hasRole(RoleName::Teacher->value))->toBeTrue()
+        ->and($targetUser->hasRole(RoleName::Admin->value))->toBeTrue();
 });
 
 it('lists all permissions via API', function (): void {

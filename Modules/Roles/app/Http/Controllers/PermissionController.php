@@ -11,7 +11,7 @@ use Modules\Roles\Services\PermissionService;
 final readonly class PermissionController
 {
     public function __construct(
-        private readonly PermissionService $permissionService,
+        private PermissionService $permissionService,
     ) {}
 
     /**

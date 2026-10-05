@@ -18,14 +18,14 @@ final readonly class DashboardController
      */
     public function index(): Response
     {
-        $totalUsers = User::count();
-        $totalRoles = Role::count();
-        $totalPermissions = Permission::count();
+        $totalUsers = User::query()->count();
+        $totalRoles = Role::query()->count();
+        $totalPermissions = Permission::query()->count();
 
-        $teachersCount = User::role(RoleName::Teacher->value)->count();
-        $studentsCount = User::role(RoleName::Student->value)->count();
-        $parentsCount = User::role(RoleName::Parent->value)->count();
-        $adminsCount = User::role(RoleName::Admin->value)->count();
+        $teachersCount = User::query()->role(RoleName::Teacher->value)->count();
+        $studentsCount = User::query()->role(RoleName::Student->value)->count();
+        $parentsCount = User::query()->role(RoleName::Parent->value)->count();
+        $adminsCount = User::query()->role(RoleName::Admin->value)->count();
 
         $recentUsers = User::with('roles')
             ->latest('id')

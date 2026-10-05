@@ -41,7 +41,7 @@ test('admin users can access admin dashboard with statistics', function (): void
     $response = $this->actingAs($admin)->get('/admin/dashboard');
 
     $response->assertOk();
-    $response->assertInertia(fn (Assert $page) => $page
+    $response->assertInertia(fn (Assert $page): Assert => $page
         ->component('admin/dashboard', false)
         ->has('stats')
         ->has('recentUsers')

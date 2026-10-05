@@ -22,18 +22,18 @@ it('seeds default users with their respective roles', function (): void {
     foreach ($expectedUsers as $expected) {
         $user = User::query()->where('email', $expected['email'])->first();
 
-        expect($user)->not->toBeNull();
-        expect($user?->name)->toBe($expected['name']);
-        expect($user?->hasRole($expected['role']))->toBeTrue();
-        expect($user?->email_verified_at)->not->toBeNull();
-        expect(Hash::check('password', (string) $user?->password))->toBeTrue();
+        expect($user)->not->toBeNull()
+            ->and($user?->name)->toBe($expected['name'])
+            ->and($user?->hasRole($expected['role']))->toBeTrue()
+            ->and($user?->email_verified_at)->not->toBeNull()
+            ->and(Hash::check('password', (string) $user?->password))->toBeTrue();
     }
 });
 
 it('can be run multiple times idempotently without duplicating users', function (): void {
     $this->seed(AuthDatabaseSeeder::class);
-    $initialUserCount = User::count();
+    $initialUserCount = User::query()->count();
 
     $this->seed(AuthDatabaseSeeder::class);
-    expect(User::count())->toBe($initialUserCount);
+    expect(User::query()->count())->toBe($initialUserCount);
 });

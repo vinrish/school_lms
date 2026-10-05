@@ -10,7 +10,7 @@ use Modules\Roles\Services\PermissionService;
 final readonly class ApiPermissionController
 {
     public function __construct(
-        private readonly PermissionService $permissionService,
+        private PermissionService $permissionService,
     ) {}
 
     /**

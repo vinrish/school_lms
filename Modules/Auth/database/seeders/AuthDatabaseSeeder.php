@@ -45,14 +45,11 @@ final class AuthDatabaseSeeder extends Seeder
         ];
 
         foreach ($defaultUsers as $userData) {
-            $user = User::firstOrCreate(
-                ['email' => $userData['email']],
-                [
-                    'name' => $userData['name'],
-                    'password' => Hash::make('password'),
-                    'email_verified_at' => now(),
-                ]
-            );
+            $user = User::query()->firstOrCreate(['email' => $userData['email']], [
+                'name' => $userData['name'],
+                'password' => Hash::make('password'),
+                'email_verified_at' => now(),
+            ]);
 
             $user->syncRoles([$userData['role']]);
         }

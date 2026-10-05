@@ -20,7 +20,7 @@ final class CreateRoleAction
             'guard_name' => $data->guardName,
         ]);
 
-        if (! empty($data->permissions)) {
+        if ($data->permissions !== []) {
             $role->syncPermissions($data->permissions);
         }
 

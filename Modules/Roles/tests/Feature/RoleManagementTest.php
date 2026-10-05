@@ -56,9 +56,9 @@ it('creates a new role with assigned permissions', function (): void {
     $response->assertSessionHas('success');
 
     $role = Role::findByName('editor', 'web');
-    expect($role)->not->toBeNull();
-    expect($role->hasPermissionTo(PermissionName::ViewReports->value))->toBeTrue();
-    expect($role->hasPermissionTo(PermissionName::ViewAssessments->value))->toBeTrue();
+    expect($role)->not->toBeNull()
+        ->and($role->hasPermissionTo(PermissionName::ViewReports->value))->toBeTrue()
+        ->and($role->hasPermissionTo(PermissionName::ViewAssessments->value))->toBeTrue();
 });
 
 it('validates unique role name on creation', function (): void {
@@ -107,10 +107,11 @@ it('updates role and synchronizes permissions', function (): void {
     ]);
 
     $response->assertRedirect(route('roles.index'));
+
     $role->refresh();
 
-    expect($role->name)->toBe('senior librarian');
-    expect($role->hasPermissionTo(PermissionName::ViewReports->value))->toBeTrue();
+    expect($role->name)->toBe('senior librarian')
+        ->and($role->hasPermissionTo(PermissionName::ViewReports->value))->toBeTrue();
 });
 
 it('deletes a role', function (): void {
@@ -119,7 +120,8 @@ it('deletes a role', function (): void {
     $response = $this->actingAs($this->user)->delete(route('roles.destroy', $role));
 
     $response->assertRedirect(route('roles.index'));
-    expect(Role::where('name', 'temporary_role')->exists())->toBeFalse();
+
+    expect(Role::query()->where('name', 'temporary_role')->exists())->toBeFalse();
 });
 
 it('renders the permissions index page', function (): void {
